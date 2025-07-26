@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 m_x=np.loadtxt("./data/ml/knn_data/mnist_x",delimiter=' ')
 m_y=np.loadtxt("./data/ml/knn_data/mnist_y")
 
-# ---------- 2. 可视化第一张图 ----------
 plt.figure()
 plt.imshow(m_x[0].reshape(28, 28), cmap='gray')
 plt.title(f'label = {int(m_y[0])}')
