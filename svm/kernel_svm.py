@@ -1,9 +1,8 @@
-# kernel_svm.py
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from data_utils import load_and_plot_data
-from SMO import SMO
+from SMO_new import SMO
 from kernels import simple_poly_kernel, rbf_kernel, cos_kernel, sigmoid_kernel
 
 if __name__ == "__main__":
