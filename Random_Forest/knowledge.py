@@ -38,3 +38,23 @@ stacking=StackingClassifier(estimators=base_models,
                             final_estimator=meata_modell)
 stacking.fit(x_train,y_train)
 print("Stacking准确率:", stacking.score(x_test, y_test))
+
+from sklearn.ensemble import AdaBoostClassifier
+
+adaboost = AdaBoostClassifier(
+    base_estimator=DecisionTreeClassifier(max_depth=1), 
+    n_estimators=100,
+    random_state=42
+)
+adaboost.fit(x_train, y_train)
+print("AdaBoost准确率:", adaboost.score(x_test, y_test))
+
+from sklearn.ensemble import GradientBoostingClassifier
+
+gbdt = GradientBoostingClassifier(
+    n_estimators=100,
+    learning_rate=0.1,
+    random_state=42
+)
+gbdt.fit(x_train, y_train)
+print("GBDT准确率:", gbdt.score(x_test, y_test))
