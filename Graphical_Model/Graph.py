@@ -26,3 +26,18 @@ for i in range(len(rows)):
     voc_cnt[cat] += train_data.data[news, voc]
 
 log_voc_freq = np.log(log_voc_freq / voc_cnt)
+
+def test_new(news):
+    rows,cols=news.nonzero()
+    log_post=np.copy(log_cat_freq)
+    for row,voc in zip(rows,cols):
+        log_post += log_voc_freq[:,voc]
+
+    return np.argmax(log_post)
+
+preds=[]
+for news in test_data.data:
+    preds.append(test_new(news))
+
+acc=np.mean(np.array(preds)==test_data.target)
+print(acc)
