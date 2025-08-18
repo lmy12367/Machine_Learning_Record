@@ -46,5 +46,12 @@ for k in range(max_iter):
             neg_energy = compute_energy(X, noisy_img, i, j, alpha, beta)
             X[i, j] = 1 if pos_energy < neg_energy else -1
 
+    plt.figure()
+    plt.axis('off')
+    plt.imshow(X, cmap='binary_r')
+    plt.show()
+    noise_rate = compute_noise_rate(X, orig_img) * 100
+    print(f'迭代轮数：{k}，噪声率：{noise_rate:.4f}%')
+
 
 
