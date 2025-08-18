@@ -16,3 +16,17 @@ def compute_noise_rate(noisy,orig):
 
 init_noise_rate=compute_noise_rate(noisy_img,orig_img)
 print (f'带噪图像与原图不一致的像素比例：{init_noise_rate * 100:.4f}%')
+
+def compute_energe(X,Y,i,j,alpha,beta):
+    energy=-beta*X[i][j]*Y[i][j]
+
+    if i>0:
+        energy -=alpha*X[i][j]*X[i-1][j]
+    if i<X.shape[0]-1:
+        energy -= alpha * X[i][j] * X[i + 1][j]
+    if j > 0:
+            energy -= alpha * X[i][j] * X[i][j - 1]
+    if j < X.shape[1] - 1:
+            energy -= alpha * X[i][j] * X[i][j + 1]
+
+    return energy
